@@ -1,6 +1,6 @@
 # The West Wing Weekly crawler
 
-Inspired by [this reddit thread](https://github.com/alexturpin/twww-crawler).
+Inspired by [this reddit thread](https://www.reddit.com/r/WestWingWeekly/comments/iyw7ka/a_couple_of_episodes_after_marlee_matlin_was/).
 
 ## Usage
 
