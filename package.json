@@ -1,0 +1,24 @@
+{
+  "name": "twww-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --experimental-modules index.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexturpin/twww-crawler.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexturpin/twww-crawler/issues"
+  },
+  "homepage": "https://github.com/alexturpin/twww-crawler#readme",
+  "dependencies": {
+    "crawler": "^1.2.2",
+    "smartquotes": "^2.3.1"
+  }
+}
