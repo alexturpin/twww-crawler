@@ -1,13 +1,13 @@
 import Crawler from 'crawler';
 import sanitize from 'sanitize-filename';
-import { createWriteStream, mkdirSync } from 'fs';
+import { createWriteStream, existsSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
 
 const BASE_URI = 'http://thewestwingweekly.com';
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0'; // Real UA is needed to prevent the website from returning 400s
 const START_AT = 2; // Skip "Coming Soon" and "Cold Open"
 const STOP_AT = Infinity; // For debugging purposes
-const SANITIZE_PATH = path => sanitize(path); // For my poor Windows machine that can't handle these
+const SANITIZE_PATH = path => sanitize(path).trim(); // For my poor Windows machine that can't handle these
 const AUDIO_PATH = episodeTitle => `downloads/audio/${SANITIZE_PATH(episodeTitle)}.mp3`;
 const TRANSCRIPT_PATH = episodeTitle => `downloads/transcript/${SANITIZE_PATH(episodeTitle)}.pdf`;
 
@@ -18,6 +18,10 @@ const fileDownloader = new Crawler({
 	callback: (error, res, done) => {
 		if (error) {
 			throw error;
+		}
+
+		if (existsSync(res.options.downloadPath)) {
+			return done();
 		}
 
 		createWriteStream(res.options.downloadPath)
